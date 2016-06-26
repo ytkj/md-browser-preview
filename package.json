@@ -11,9 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "browser-sync": "^2.13.0",
-    "gulp": "^3.9.1",
     "lodash.template": "^4.2.5",
     "marked": "^0.3.5",
-    "run-sequence": "^1.2.1"
+    "vinyl-fs": "^2.4.3"
   }
 }
