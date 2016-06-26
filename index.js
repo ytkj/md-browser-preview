@@ -5,41 +5,33 @@ let vfs = require('vinyl-fs'),
     path = require('path'),
     fs = require('fs');
 
-let target = {
-    md: 'target.md',
-    html: 'target.html',
-    dir: 'tmp'
+module.exports = function(options) {
+
+    function compile() {
+        vfs.src(options.target.md)
+            .pipe(marked(options.marked))
+            .pipe(wrap(options.wrap))
+            .pipe(vfs.dest(options.target.dir))
+            .pipe(browserSync.reload({
+                stream: true
+            }));
+    }
+
+    function init(callback) {
+        browserSync.init({
+            startPath: '/' + options.target.html,
+            server: {
+                baseDir: options.target.dir
+            },
+            browser: 'default'
+        }, callback);
+    }
+
+    function startWatch(listener) {
+        fs.watchFile(options.target.md, listener);
+    }
+
+    init(compile);
+    startWatch(compile);
+
 };
-
-let tmp = path.join(__dirname, 'tmp');
-
-function compile() {
-    vfs.src(target.md)
-        .pipe(marked({
-            gfm: true
-        }))
-        .pipe(wrap({
-            title: 'hoge'
-        }))
-        .pipe(vfs.dest(target.dir))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-}
-
-function init(callback) {
-    browserSync.init({
-        startPath: '/' + target.html,
-        server: {
-            baseDir: target.dir
-        },
-        browser: 'default'
-    }, callback);
-}
-
-function startWatch(listener) {
-    fs.watchFile(target.md, listener);
-}
-
-init(compile);
-startWatch(compile);
