@@ -6,7 +6,8 @@ let path = require('path');
     argv = require('../lib/argv');
 
 let htdocs = path.join(__dirname, '../tmp'),
-    styles = path.join(__dirname, '../node_modules/highlight.js/styles'),
+    syntaxPath = path.join(__dirname, '../node_modules/highlight.js/styles'),
+    themePath = path.join(__dirname, '../node_modules/github-markdown-css/'),
     inputFileName = argv._[0],
     inputFilePath =path.join(process.cwd(), inputFileName),
     outputFileName = util.extReplace(path.basename(inputFilePath)),
@@ -26,14 +27,15 @@ let options = {
     },
     wrap: {
         title: argv.title,
-        style: argv.style
+        syntax: argv.syntax
     },
     browserSync: {
         startPath: '/' + outputFileName,
         server: {
             baseDir: htdocs,
             routes: {
-                '/styles': styles
+                '/syntax': syntaxPath,
+                '/theme': themePath
             }
         },
         port: argv.port,
