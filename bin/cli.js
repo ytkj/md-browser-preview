@@ -9,7 +9,9 @@ let htdocs = path.join(__dirname, '../tmp'),
     syntaxPath = path.join(__dirname, '../node_modules/highlight.js/styles'),
     themePath = path.join(__dirname, '../node_modules/github-markdown-css/'),
     inputFileName = argv._[0],
-    inputFilePath =path.join(process.cwd(), inputFileName),
+    inputFilePath = path.isAbsolute(inputFileName) ?
+        inputFileName :
+        path.join(process.cwd(), inputFileName),
     outputFileName = util.extReplace(path.basename(inputFilePath)),
     outputFilePath = path.join(htdocs, outputFileName),
     highlight = (code, lang) => {
