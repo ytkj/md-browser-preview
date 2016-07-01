@@ -6,7 +6,7 @@ Compilation and reloading browser is automatically done when saving .md file.
 
 ## Install
 
-1. `npm install -g https://github.com/ytkj/md-browser-preview.git`
+1. `npm install -g md-browser-preview
 1. `md-browser-preview xxx.md`
 
 ## Usage
