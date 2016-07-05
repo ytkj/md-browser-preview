@@ -6,8 +6,7 @@
   "bin": "bin/cli.js",
   "repository": "ytkj/md-browser-preview",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/cli.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
