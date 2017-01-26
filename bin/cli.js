@@ -6,8 +6,6 @@ let path = require('path');
     argv = require('../lib/argv');
 
 let htdocs = path.join(__dirname, '../tmp'),
-    syntaxPath = path.join(__dirname, '../node_modules/highlight.js/styles'),
-    themePath = path.join(__dirname, '../node_modules/github-markdown-css/'),
     inputFileName = argv._[0],
     inputFilePath = path.isAbsolute(inputFileName) ?
         inputFileName :
@@ -34,11 +32,7 @@ let options = {
     browserSync: {
         startPath: '/' + outputFileName,
         server: {
-            baseDir: htdocs,
-            routes: {
-                '/syntax': syntaxPath,
-                '/theme': themePath
-            }
+            baseDir: htdocs
         },
         port: argv.port,
         browser: argv.browser
