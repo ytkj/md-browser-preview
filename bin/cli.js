@@ -1,4 +1,7 @@
-let path = require('path');
+#!/usr/bin/env node
+
+'use strict';
+let path = require('path'),
     yargs = require('yargs'),
     highlightjs = require('highlight.js'),
     mdBrowserPreview = require('../lib/index'),

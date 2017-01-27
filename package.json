@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
-  "bin": "bin/cli.js",
+  "bin": "./bin/cli.js",
   "repository": "ytkj/md-browser-preview",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
