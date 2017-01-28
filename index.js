@@ -6,22 +6,20 @@ let path = require('path'),
     translate = require('./lib/translate'),
     template = require('./lib/template'),
     pfs = require('./lib/util/promise-fs'),
-    extReplace = require('./lib/util/extReplace');
+    extReplace = require('./lib/util/extReplace'),
+    tmpdir = require('./lib/util/tmpdir');
 
 function mdBrowserPreview(option) {
 
-    // input file name
+    // input file path
     let inputFilePath = path.join(process.cwd(), option.input);
     if (path.isAbsolute(option.input)) {
         inputFilePath = option.input;
     }
 
-    // htdocs dir path for local server, and file name to serve
-    let tmpFileName = extReplace(path.basename(inputFilePath)),
-        tmpFilePath = path.join(__dirname, './tmp', tmpFileName);
-
-    // output file path if required
-    let outputFilePath;
+    // output file name and file path if required
+    let outputFileName = extReplace(path.basename(inputFilePath)),
+        outputFilePath;
     if (typeof option.output === 'string') {
         let filepath;
         if (path.isAbsolute(option.output)) {
@@ -29,13 +27,16 @@ function mdBrowserPreview(option) {
         } else {
             filepath = path.join(process.cwd(), option.output);
         }
-        outputFilePath = path.join(filepath, tmpFileName);
+        outputFilePath = path.join(filepath, outputFileName);
     }
+
+    // htdocs local server, and file name to serve
+    let tmpFilePath = path.join(tmpdir(), outputFileName);
 
     // compile, then launch local server
     compile().then(() => {
         browserSync.init({
-            startPath: '/' + tmpFileName,
+            startPath: '/' + outputFileName,
             server: {baseDir: path.dirname(tmpFilePath)},
             port: option.port,
             browser: option.browser
