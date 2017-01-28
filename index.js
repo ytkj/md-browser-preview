@@ -5,7 +5,8 @@ let path = require('path'),
     browserSync = require('browser-sync').create('bs'),
     translate = require('./lib/translate'),
     template = require('./lib/template'),
-    util = require('./lib/util');
+    pfs = require('./lib/util/promise-fs'),
+    extReplace = require('./lib/util/extReplace');
 
 function mdBrowserPreview(option) {
 
@@ -16,7 +17,7 @@ function mdBrowserPreview(option) {
     }
 
     // htdocs dir path for local server, and file name to serve
-    let tmpFileName = util.extReplace(path.basename(inputFilePath));
+    let tmpFileName = extReplace(path.basename(inputFilePath)),
         tmpFilePath = path.join(__dirname, './tmp', tmpFileName);
 
     // output file path if required
@@ -49,16 +50,16 @@ function mdBrowserPreview(option) {
     // compile .md file -> .html file
     function compile() {
 
-        return util.readFile(inputFilePath, {
+        return pfs.readFile(inputFilePath, {
             encoding: 'utf8'
         }).then((mdText) => {
             return translate(mdText, option);
         }).then((partialHtml) => {
             return template(partialHtml, option);
         }).then((html) => {
-            let arr = [util.writeFile(tmpFilePath, html, 'utf8')];
+            let arr = [pfs.writeFile(tmpFilePath, html, 'utf8')];
             if (outputFilePath) {
-                arr.push(util.writeFile(outputFilePath, html, 'utf8'));
+                arr.push(pfs.writeFile(outputFilePath, html, 'utf8'));
             }
             return Promise.all(arr);
         }).catch((reason) => {
