@@ -33,23 +33,24 @@ function mdBrowserPreview(option) {
     // htdocs local server, and file name to serve
     let tmpFilePath = path.join(tmpdir(), outputFileName);
 
+    // option for local server: BrowserSync
+    let bsOption = {
+        startPath: '/' + outputFileName,
+        server: {baseDir: path.dirname(tmpFilePath)},
+        port: option.port,
+        browser: option.browser,
+        ui: false
+    };
+
     // compile, then launch local server
-    compile().then(() => {
-        browserSync.init({
-            startPath: '/' + outputFileName,
-            server: {baseDir: path.dirname(tmpFilePath)},
-            port: option.port,
-            browser: option.browser,
-            ui: false
-        });
-    });
+    compile().then(() => browserSync.init(bsOption));
 
     // watch .md file
     fs.watchFile(inputFilePath, () => {
         compile().then(() => browserSync.reload());
     });
 
-    // compile .md file -> .html file
+    // subroutine: compile .md file -> .html file
     function compile() {
 
         return pfs.readFile(inputFilePath, {
