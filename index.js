@@ -1,6 +1,6 @@
 'use strict';
 
-let path = require('path'),
+const path = require('path'),
     fs = require('fs'),
     browserSync = require('browser-sync').create('bs'),
     translate = require('./lib/translate'),
