@@ -39,7 +39,8 @@ function mdBrowserPreview(option) {
             startPath: '/' + outputFileName,
             server: {baseDir: path.dirname(tmpFilePath)},
             port: option.port,
-            browser: option.browser
+            browser: option.browser,
+            ui: false
         });
     });
 
