@@ -11,6 +11,8 @@ Compilation and reloading browser is automatically done when saving .md file.
 
 ## Usage
 
+### CLI
+
     Usage:
     > md-browser-preview [options] [filename]
 
@@ -22,6 +24,17 @@ Compilation and reloading browser is automatically done when saving .md file.
       -g, --gfm      use github favored markdown                     [boolean] [default: true]
       -s, --syntax   highlight.js style sheet name                [string] [default: "github"]
       -h, --help     show this help menu                                             [boolean]
+
+### Node.js Programming
+
+```javascript
+const mbp = require('md-browser-preview');
+
+mbp({
+    input: './target.md',
+    output: '.'
+});
+```
 
 ## Development
 
