@@ -7,9 +7,21 @@ const path = require('path'),
     template = require('./lib/template'),
     pfs = require('./lib/util/promise-fs'),
     extReplace = require('./lib/util/extReplace'),
-    tmpdir = require('./lib/util/tmpdir');
+    tmpdir = require('./lib/util/tmpdir'),
+    options = require('./lib/options');
 
 function mdBrowserPreview(option) {
+
+    // dafault option object from yargs options settings
+    let defaultOption = {};
+    Object.keys(options).forEach((shortKey) => {
+        let key = options[shortKey].alias,
+            d = options[shortKey].default;
+        defaultOption[key] = d;
+    });
+
+    // default value for undefind property in option
+    option = Object.assign({}, defaultOption, option);
 
     // input file path
     let inputFilePath = path.join(process.cwd(), option.input);
