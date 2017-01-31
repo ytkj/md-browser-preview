@@ -6,7 +6,7 @@
   "bin": "./bin/cli.js",
   "repository": "ytkj/md-browser-preview",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -w"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +19,9 @@
     "marked": "^0.3.5",
     "yargs": "^4.7.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "mocha": "^3.2.0"
+  }
 }
