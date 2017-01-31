@@ -6,7 +6,7 @@ const path = require('path'),
     translate = require('./lib/translate'),
     template = require('./lib/template'),
     pfs = require('./lib/util/promise-fs'),
-    extReplace = require('./lib/util/extReplace'),
+    extReplace = require('./lib/util/ext-replace'),
     tmpdir = require('./lib/util/tmpdir'),
     options = require('./lib/options');
 
