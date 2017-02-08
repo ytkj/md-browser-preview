@@ -1,3 +1,7 @@
+## 1.0.0 (2017-02-08)
+### Features
+- **Breaking Change:** Improve Node.js Programming API: Class-base API.
+
 ## 0.4.0 (2017-01-30)
 ### Features
 - Add Node.js Programming API.

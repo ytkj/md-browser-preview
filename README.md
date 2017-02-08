@@ -27,13 +27,37 @@ Compilation and reloading browser is automatically done when saving .md file.
 
 ### Node.js Programming
 
-```javascript
-const mbp = require('md-browser-preview');
+#### Basic Usage
 
-mbp({
+```javascript
+const MdBrowserPreview = require('md-browser-preview');
+
+MdBrowserPreview.init({
     input: './target.md',
     output: '.'
 });
+```
+
+#### Advanced Usage
+
+```javascript
+const MdBrowserPreview = require('md-browser-preview');
+
+// instanciate
+let mbp = new MdBrowserPreview({
+    input: './target.md',
+    output: '.'
+});
+
+// compile, launch local server and browser, then start watching.
+mbp.compile().then(() => {
+    return mbp.serve();
+}).then(() => {
+    mbp.startWatch();
+});
+
+// exit local server and stop watching.
+mbp.exit();
 ```
 
 ## Development
