@@ -1,3 +1,5 @@
+const Mbp = require('../../index');
+
 describe('e2e test', () => {
 
     it('local server and browser are launced.', function(done) {

@@ -6,7 +6,8 @@
   "bin": "./bin/cli.js",
   "repository": "ytkj/md-browser-preview",
   "scripts": {
-    "test": "mocha -w"
+    "test": "mocha -w",
+    "e2e": "mocha test/e2e"
   },
   "keywords": [],
   "author": "",
