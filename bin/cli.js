@@ -2,11 +2,11 @@
 
 'use strict';
 
-const mdBrowserPreview = require('../index'),
+const MdBrowserPreview = require('../index'),
     argv = require('../lib/argv');
 
 let option = Object.assign({}, {
     input: argv._[0]
 }, argv);
 
-mdBrowserPreview(option);
+MdBrowserPreview.init(option);
