@@ -1,3 +1,9 @@
+## 1.0.1 (2020-05-05)
+
+### Others
+
+- updated outdated packages #1
+
 ## 1.0.0 (2017-02-08)
 ### Features
 - **Breaking Change:** Improve Node.js Programming API: Class-base API.

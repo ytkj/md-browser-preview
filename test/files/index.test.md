@@ -39,7 +39,9 @@ function myFunc(arg) {
 *********
 
 [Lint to Google.com](http://google.com)
-~~~cancel~~~
+
+~~cancel~~
+
 http://google.com
 
 |header1|header2|header3|

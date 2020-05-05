@@ -1,6 +1,6 @@
 {
   "name": "md-browser-preview",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": "./bin/cli.js",
@@ -13,16 +13,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "browser-sync": "^2.13.0",
-    "github-markdown-css": "^2.3.0",
-    "highlight.js": "^9.4.0",
-    "lodash.template": "^4.2.5",
-    "marked": "^0.3.5",
-    "yargs": "^4.7.1"
+    "browser-sync": "^2.26.7",
+    "github-markdown-css": "^4.0.0",
+    "highlight.js": "^10.0.2",
+    "lodash.template": "^4.5.0",
+    "marked": "^1.0.0",
+    "yargs": "^15.3.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "mocha": "^3.2.0"
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^7.1.2"
   }
 }
